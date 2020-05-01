@@ -6,7 +6,7 @@ const inquirer = require('inquirer')
 const pkgPath = 'packages'
 
 const generatorMap = {
-  js: 'nm'
+  js: path.join(__dirname, '..', 'generators/js-template')
 }
 
 const questions = [
@@ -14,25 +14,25 @@ const questions = [
     default: 'js',
     type: 'rawlist',
     name: 'projectType',
-    message: '请选择组件类型',
+    message: 'Please select the component type',
     choices: [
       {
         value: 'js',
-        name: 'js 组件'
+        name: 'js library'
       }
     ]
   },
   {
     name: 'name',
-    message: '输入项目名字，只能包含小写字母以及短横线',
+    message: 'Enter the project name, with only lowercase letters and short horizontal lines',
     default: '',
     validate (name) {
-      if (!name) return '名字不能为空'
+      if (!name) return 'The name cannot be empty'
       if (/[^a-z-]/.test(name)) {
-        return '名字只能包含小写字母以及短横线'
+        return 'Names can only contain lowercase letters and short horizontal lines'
       }
       if (fs.existsSync(cwd(`${pkgPath}/${name}`))) {
-        return `${name} 目录已存在，请重新创建`
+        return `${name} directory already exists, please re-create`
       }
       return true
     }
@@ -44,6 +44,7 @@ const cwd = (...args) => path.join(process.cwd(), ...args)
 async function init () {
   const answer = await inquirer.prompt(questions)
   const { projectType, name } = answer
+  process.env.PROJECT_NAME = name
 
   const generator = generatorMap[projectType]
   const cmd = `sao ${generator} ./${pkgPath}/${name} --update`

@@ -1,0 +1,25 @@
+{
+  "name": "sao-js-template",
+  "version": "0.0.0",
+  "description": "my remarkable SAO generator",
+  "repository": {
+    "url": "hjinbin/sao-js-template",
+    "type": "git"
+  },
+  "author": "hjinbin <1057316754@qq.com> (github.com/hjinbin)",
+  "license": "MIT",
+  "files": [
+    "saofile.js",
+    "template"
+  ],
+  "scripts": {
+    "test": "ava"
+  },
+  "dependencies": {
+    "superb": "^1.3.0"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "sao": "^1.0.0"
+  }
+}
