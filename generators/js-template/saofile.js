@@ -1,3 +1,5 @@
+const modifyPkg = require('./lib/modifyPkg')
+
 module.exports = {
   prompts () {
     return [
@@ -19,8 +21,13 @@ module.exports = {
       },
       {
         name: 'description',
-        message: 'How would you descripe the new project',
+        message: 'How would you descript the new project',
         default: ({ name }) => name || process.env.PROJECT_NAME
+      },
+      {
+        name: 'version',
+        message: 'What is the version number of this project',
+        default: '1.0.0'
       },
       {
         name: 'username',
@@ -51,6 +58,12 @@ module.exports = {
     if (process.env.PROJECT_NAME && !this.answers.name) {
       this.answers.name = process.env.PROJECT_NAME
     }
+
+    const { name } = this.answers
+    this.answers.camelName = name
+      .replace(/-([a-z])/g, (all, m) => m.toUpperCase())
+      .replace(/^[a-z]/, m => m.toUpperCase())
+
     return [
       {
         type: 'add',
@@ -60,8 +73,17 @@ module.exports = {
       {
         type: 'move',
         patterns: {
-          gitignore: '.gitignore'
+          gitignore: '.gitignore',
+          // If we use `package.json` directly
+          // Then `template` folder will be treated as a package too, which isn't safe
+          '_package.json': 'package.json',
+          npmignore: '.npmignore'
         }
+      },
+      {
+        type: 'modify',
+        files: 'package.json',
+        handler: () => modifyPkg(this.answers)
       }
     ]
   },
