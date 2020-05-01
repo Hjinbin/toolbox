@@ -1,0 +1,14 @@
+{
+  "name": "toolbox",
+  "version": "0.0.0",
+  "description": "工具组件集合",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "init": "node ./scripts/init.js"
+  },
+  "devDependencies": {
+    "inquirer": "^7.1.0",
+    "lerna": "^3.20.2"
+  }
+}
