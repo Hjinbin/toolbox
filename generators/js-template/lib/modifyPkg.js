@@ -19,14 +19,14 @@ function updateScripts (answers) {
   const res = {
     build: 'rm -fr dist && bili'
   }
-  const { example, test } = answers
+  const { example, test,  coverage } = answers
 
   if (example) {
     res.dev = 'cd example && npm run dev'
   }
 
   if (test) {
-    res.test = 'jest'
+    res.test = `jest${coverage ? ' --coverage' : ''}`
     res.build = 'npm run test && ' + res.build
   }
 

@@ -62,6 +62,12 @@ module.exports = {
         type: 'confirm',
         message: 'Whether to initialize the Jest test template',
         default: true
+      },
+      {
+        name: 'coverage',
+        type: 'confirm',
+        message: 'Whether to increase test coverage',
+        default: true
       }
     ]
   },
