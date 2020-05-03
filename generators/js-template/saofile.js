@@ -49,9 +49,15 @@ module.exports = {
           return `github.com/${username}`
         },
         store: true
-      }
+      },
       // TODO: apiDocs, gitoapage, example, test, coverage
-    ].filter(Boolean)
+      {
+        name: 'example',
+        type: 'confirm',
+        message: 'Whether to generate an example directory',
+        default: true
+      }
+    ]
   },
   actions () {
     // 手动设置 name
@@ -68,7 +74,10 @@ module.exports = {
       {
         type: 'add',
         // Copy and transform all files in `template` folder into output directory
-        files: '**'
+        files: '**',
+        filters: {
+          'example/**/*': 'example'
+        }
       },
       {
         type: 'move',

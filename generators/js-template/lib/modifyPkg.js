@@ -15,10 +15,17 @@ module.exports = answers => {
   }
 }
 
-function updateScripts () {
-  return {
+function updateScripts (answers) {
+  const res = {
     build: 'rm -fr dist && bili'
   }
+  const { example } = answers
+
+  if (example) {
+    res.dev = 'cd example && npm run dev'
+  }
+
+  return res
 }
 
 function updatedevDependencies () {
