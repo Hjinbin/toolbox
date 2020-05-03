@@ -56,6 +56,12 @@ module.exports = {
         type: 'confirm',
         message: 'Whether to generate an example directory',
         default: true
+      },
+      {
+        name: 'test',
+        type: 'confirm',
+        message: 'Whether to initialize the Jest test template',
+        default: true
       }
     ]
   },
@@ -76,7 +82,9 @@ module.exports = {
         // Copy and transform all files in `template` folder into output directory
         files: '**',
         filters: {
-          'example/**/*': 'example'
+          'example/**/*': 'example',
+          'test/**/*': 'test',
+          'jest.config.js': 'test'
         }
       },
       {

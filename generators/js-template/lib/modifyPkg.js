@@ -10,7 +10,7 @@ module.exports = answers => {
     scripts: updateScripts(answers),
     author: `${username} <${email}>`,
     license: 'MIT',
-    devDependencies: updatedevDependencies(answers),
+    devDependencies: updateDevDependencies(answers),
     browserslist: ['defaults', 'ie >= 11, iOS >= 7, Android >= 4']
   }
 }
@@ -19,17 +19,30 @@ function updateScripts (answers) {
   const res = {
     build: 'rm -fr dist && bili'
   }
-  const { example } = answers
+  const { example, test } = answers
 
   if (example) {
     res.dev = 'cd example && npm run dev'
   }
 
+  if (test) {
+    res.test = 'jest'
+    res.build = 'npm run test && ' + res.build
+  }
+
   return res
 }
 
-function updatedevDependencies () {
-  return {
+function updateDevDependencies (answers) {
+  const res = {
     bili: '^4.8.1'
   }
+
+  const { test } = answers
+
+  if (test) {
+    res.jest = '^25.5'
+  }
+
+  return res
 }
