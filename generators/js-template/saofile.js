@@ -67,6 +67,15 @@ module.exports = {
         name: 'coverage',
         type: 'confirm',
         message: 'Whether to increase test coverage',
+        default: true,
+        when ({ test }) {
+          return test
+        }
+      },
+      {
+        name: 'docs',
+        type: 'confirm',
+        message: 'Whether to use JSDoc to generate a document',
         default: true
       }
     ]

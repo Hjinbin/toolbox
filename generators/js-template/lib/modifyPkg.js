@@ -16,19 +16,30 @@ module.exports = answers => {
 }
 
 function updateScripts (answers) {
+  const buildScripts = []
   const res = {
-    build: 'rm -fr dist && bili'
+    'build:lib': 'rm -fr dist && bili',
   }
-  const { example, test,  coverage } = answers
+  const { example, test,  coverage, docs } = answers
 
   if (example) {
     res.dev = 'cd example && npm run dev'
   }
 
+  if (docs) {
+    // windows10 报错找不到 ./src/*.js 对应的文件
+    res.docs = 'jsdoc -d ./docs --readme ./README.md src'
+    res['docs:serve'] = 'node ../../scripts/pkgDocsServe.js'
+    buildScripts.push('npm run docs')
+  }
+
   if (test) {
     res.test = `jest${coverage ? ' --coverage' : ''}`
-    res.build = 'npm run test && ' + res.build
+    buildScripts.push('npm run test')
   }
+
+  buildScripts.push('npm run build:lib')
+  res.build = buildScripts.join(' && ')
 
   return res
 }
