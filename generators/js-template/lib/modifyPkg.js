@@ -29,7 +29,7 @@ function updateScripts (answers) {
   if (docs) {
     // windows10 报错找不到 ./src/*.js 对应的文件
     res.docs = 'jsdoc -d ./docs --readme ./README.md src'
-    res['docs:serve'] = 'node ../../scripts/pkgDocsServe.js'
+    res['docs:serve'] = 'npm run docs && node ../../scripts/pkgDocsServe.js'
     buildScripts.push('npm run docs')
   }
 
