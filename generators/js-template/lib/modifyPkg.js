@@ -46,7 +46,7 @@ function updateScripts (answers) {
 
 function updateDevDependencies (answers) {
   const res = {
-    bili: '^4.8.1'
+    bili: '^4.10.0'
   }
 
   const { test } = answers
