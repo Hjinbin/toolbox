@@ -4,8 +4,22 @@
 
 ## 技术栈
 
-### lerna
+### Lerna
 
-包管理
+使用 Lerna 进行包管理，自动管理依赖，自动生成 change log
 
-### bili （基于 rollup）
+### rollup
+
+使用 bili (基于rollup封装的库) 打包
+
+### example
+
+生成 example 目录
+
+### Jest
+
+生成 Jest 测试模板，提供测试覆盖率报告
+
+### Docs
+
+自动生成 API 文档，生成网站
