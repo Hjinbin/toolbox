@@ -8,10 +8,13 @@
   "scripts": {
     "init": "node ./scripts/init.js",
     "docs:serve": "docsify serve docs",
-    "stat:sync": "node ./scripts/statSync.js"
+    "stat:sync": "node ./scripts/statSync.js",
+    "commit": "git-cz"
   },
   "devDependencies": {
     "browser-sync": "^2.26.7",
+    "commitizen": "^4.1.2",
+    "cz-conventional-changelog": "3.2.0",
     "fs-extra": "^9.0.0",
     "husky": "^4.2.5",
     "inquirer": "^7.1.0",
@@ -20,6 +23,11 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run stat:sync && git add docs"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }
