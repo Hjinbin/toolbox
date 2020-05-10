@@ -7,7 +7,7 @@
 ### 安装
 
 ```shell
-npm i @cai/js-utils
+npm i cai-js-utils
 ```
 
 
