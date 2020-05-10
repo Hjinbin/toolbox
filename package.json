@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "init": "node ./scripts/init.js",
-    "docs:serve": "node ./scripts/docsServe.js",
+    "docs:serve": "docsify serve docs",
     "stat:sync": "node ./scripts/statSync.js"
   },
   "devDependencies": {
