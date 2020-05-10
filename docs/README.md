@@ -1,25 +1,84 @@
 # ToolBox
 
-> 前端组件库，基于 [SAO](https://github.com/saojs/sao), [lerna](https://github.com/lerna/lerna)
+## Motivation
 
-## 技术栈
+`ToolBox` 用于存放前端开发中常见工具函数，常用组件，有以下优点
 
-### Lerna
+- 一次编写，多次复用，避免在多个项目中重复封装
+- 快速开发，基于 [SAO](https://github.com/saojs/sao) 生成模板，集成 example 示例、单元测试、测试覆盖率报告、自动生成API文档
+- 维护升级方便，使用 [Lerna](https://lerna.js.org/) 管理和发布组件
+- 使用 [bili](https://github.com/egoist/bili) (基于rollup封装)，支持打包为 ES Module，可以在项目中按需引入
 
-使用 Lerna 进行包管理，自动管理依赖，自动生成 change log
+## Quick Start
 
-### rollup
+安装 sao，项目依赖
 
-使用 bili (基于rollup封装的库) 打包
+```shell
+yarn global add sao
+yarn
+```
 
-### example
+初始化模板
 
-生成 example 目录
+```shell
+npm run init
+```
 
-### Jest
+## 技术细节
 
-生成 Jest 测试模板，提供测试覆盖率报告
+### 多包管理
 
-### Docs
+使用 [Lerna](https://lerna.js.org/) 进行多包管理有以下优点
 
-自动生成 API 文档，生成网站
+- 方便管理包之间的依赖
+- 管理多包发布，并自动为每个包生成 `CHANGELOG.md` 文件
+
+### 快速开发
+
+使用 [SAO](https://github.com/saojs/sao) 生成组件模板
+
+> 为什么不使用 yeoman？
+>
+>yeoman 功能强大，但过于复杂，sao 开发和使用更加简单，适合快速开发
+
+运行 `npm run init` 即可根据选择生成模板，无需手动搭建，同时集成了可选的以下模块
+
+####  example
+
+方便开发调试，发布之后，可作为使用示例
+
+#### 测试用例
+
+直接编写测试用例，同时可生成测试覆盖率报告，发布之后，自动集成到文档中方便查看
+
+#### API 文档
+
+文档使用 [docsify](https://docsify.js.org) 开发，根据 `README.md` 生成文档站点，运行以下命令预览
+
+```shell
+npm run docs:serve
+```
+
+文档发布使用 [Github Pages](https://pages.github.com/)，文档需要放在 `docs` 目录下，项目中加入了 [husky](https://github.com/typicode/husky)，代码提交前会自动同步 `packages` 目录下的组件文档
+
+##### API 文档
+
+组件API文档使用 `JSDoc`，可根据注释自动生成，提高开发效率，如需，手动编写文档则写到 `README.md`
+
+值得注意的是，开发完组件后，需要手动将组件链接添加到 `list.md` 中
+
+### 提交规范
+
+项目使用 [commitizen](https://github.com/commitizen/cz-cli) 生成规范的提交信息，方便根据 commit 记录生成 CHANGELOG
+
+```shell
+git add .
+# 使用 npm run commit 代替 git commit
+npm run commit
+# 或直接使用
+npx git-cz
+```
+
+### 如何发布
+
+TODO
