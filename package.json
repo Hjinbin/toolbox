@@ -3,13 +3,17 @@
   "name": "toolbox",
   "version": "0.0.0",
   "description": "工具组件集合",
+  "workspaces": [
+    "packages/*"
+  ],
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "init": "node ./scripts/init.js",
     "docs:serve": "docsify serve docs",
     "stat:sync": "node ./scripts/statSync.js",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "release": "lerna publish --conventional-commits"
   },
   "devDependencies": {
     "browser-sync": "^2.26.7",
