@@ -1,0 +1,17 @@
+{
+  "presets": ["bili/babel"],
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "bili/babel",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ]
+    }
+  }
+}

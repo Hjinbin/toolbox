@@ -12,6 +12,7 @@
     "init": "node ./scripts/init.js",
     "docs:serve": "docsify serve docs",
     "stat:sync": "node ./scripts/statSync.js",
+    "docs": "npm run stat:sync && npm run docs:serve",
     "commit": "git-cz",
     "release": "lerna publish --conventional-commits"
   },

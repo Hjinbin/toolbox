@@ -105,7 +105,6 @@ module.exports = {
       {
         type: 'move',
         patterns: {
-          gitignore: '.gitignore',
           // If we use `package.json` directly
           // Then `template` folder will be treated as a package too, which isn't safe
           '_package.json': 'package.json',
@@ -120,7 +119,6 @@ module.exports = {
     ]
   },
   async completed () {
-    this.gitInit()
     await this.npmInstall()
     this.showProjectTips()
   }
