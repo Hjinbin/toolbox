@@ -2,7 +2,7 @@ module.exports = answers => {
   const { name, version, description, username, email } = answers
 
   return {
-    name: `@cai/${name}`,
+    name: `cai-${name}`,
     version,
     description,
     main: 'dist/index.min.js',

@@ -7,7 +7,7 @@
 ### 安装
 
 ```shell
-npm i @cai/<%= name %>
+npm i cai-<%= name %>
 ```
 
 <% if(docs){ %>
