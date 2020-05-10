@@ -1,0 +1,25 @@
+{
+  "name": "@cai/js-utils",
+  "version": "0.0.0",
+  "description": "js-utils",
+  "main": "dist/index.min.js",
+  "module": "dist/index.esm.min.js",
+  "scripts": {
+    "build:lib": "rm -fr dist && bili",
+    "dev": "cd example && npm run dev",
+    "docs": "jsdoc -d ./docs --readme ./README.md src",
+    "docs:serve": "npm run docs && node ../../scripts/pkgDocsServe.js",
+    "test": "jest --coverage",
+    "build": "npm run docs && npm run test && npm run build:lib"
+  },
+  "author": "hjinbin <1057316754@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "bili": "^4.10.0",
+    "jest": "^25.5"
+  },
+  "browserslist": [
+    "defaults",
+    "ie >= 11, iOS >= 7, Android >= 4"
+  ]
+}
