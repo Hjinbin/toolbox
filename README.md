@@ -30,8 +30,9 @@ npm run init
 
 使用 [Lerna](https://lerna.js.org/) 进行多包管理有以下优点
 
-- 方便管理包之间的依赖
-- 管理多包发布，并自动为每个包生成 `CHANGELOG.md` 文件
+- 自动解决package之间的依赖关系
+- 管理多包发布，通过 `git` 检测文件改动，自动发布
+- 根据 `git` 提交记录，自动生成 `CHANGELOG`
 
 ### 快速开发
 
@@ -39,7 +40,7 @@ npm run init
 
 > 为什么不使用 yeoman？
 >
->yeoman 功能强大，但过于复杂，sao 开发和使用更加简单，适合快速开发
+> yeoman 功能强大，但过于复杂，sao 开发和使用更加简单，适合快速开发
 
 运行 `npm run init` 即可根据选择生成模板，无需手动搭建，同时集成了可选的以下模块
 
@@ -67,6 +68,15 @@ npm run docs:serve
 
 值得注意的是，开发完组件后，需要手动将组件链接添加到 `list.md` 中
 
+### 打包
+
+package 打包使用 [bili](https://github.com/egoist/bili)，基于 rollup 封装的构建工具，可以将 `js` 库打包为 `ES Module`，可以发挥 `Webapck` 的 `Tree Shaking` 功能
+
+`package.json` 中有以下两个入口
+
+- module: `webpack` 在 import 一个模块时会根据 `module` 来引入模块
+- main: 打包成 `cjs` 格式的模块路径
+
 ### 提交规范
 
 项目使用 [commitizen](https://github.com/commitizen/cz-cli) 生成规范的提交信息，方便根据 commit 记录生成 CHANGELOG
@@ -81,4 +91,20 @@ npx git-cz
 
 ### 如何发布
 
-TODO
+#### Git Flow
+
+- `master` 放置可以直接发布的代码，不能直接修改 push
+- `dev` 用于开发，防止最新的预发布代码，发布时合并到 `master` 分支进行发布
+- `dev-feature` 从 `dev` 分支 checkout 出新分支用于开发新功能，再合并到 `dev`
+- `bugfix` 从 `dev` 分支 checkout 出新分支用于 bugfix，再合并到 `dev`
+
+#### 发布
+
+切换到 `master` 分支，以 `no fast forward` 方式合并 `dev`，然后进行发布
+
+```shell
+git checkout master
+git merge xxx --no-ff
+# 发布
+npm run release
+```
