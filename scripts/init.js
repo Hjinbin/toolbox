@@ -6,7 +6,8 @@ const inquirer = require('inquirer')
 const pkgPath = 'packages'
 
 const generatorMap = {
-  js: path.join(__dirname, '..', 'generators/js-template')
+  js: path.join(__dirname, '..', 'generators/js-template'),
+  vue: path.join(__dirname, '..', 'generators/vue-template')
 }
 
 const questions = [
@@ -19,6 +20,10 @@ const questions = [
       {
         value: 'js',
         name: 'js library'
+      },
+      {
+        value: 'vue',
+        name: 'vue component'
       }
     ]
   },
