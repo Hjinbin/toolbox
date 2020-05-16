@@ -20,7 +20,7 @@ function updateScripts (answers) {
   const res = {
     'build:lib': 'rm -fr dist && bili',
   }
-  const { example, test,  coverage, docs } = answers
+  const { example, test, docs } = answers
 
   if (example) {
     res.dev = 'cd example && npm run dev'
@@ -34,7 +34,7 @@ function updateScripts (answers) {
   }
 
   if (test) {
-    res.test = `jest${coverage ? ' --coverage' : ''}`
+    res.test = 'jest'
     buildScripts.push('npm run test')
   }
 
@@ -45,7 +45,7 @@ function updateScripts (answers) {
 }
 
 function updateDevDependencies (answers) {
-  const res = {
+  let res = {
     bili: '^4.10.0',
     'node-sass': '^4.13.1',
     'rollup-plugin-vue': '^5.1.6',
@@ -56,7 +56,19 @@ function updateDevDependencies (answers) {
   const { test } = answers
 
   if (test) {
-    res.jest = '^25.5'
+    res = {
+      "@vue/cli-plugin-unit-jest": "^4.3.1",
+      "@vue/test-utils": "^1.0.2",
+      "babel-core": "^6.26.3",
+      "babel-jest": "^26.0.1",
+      "bili": "^4.10.0",
+      "jest": "^26.0.1",
+      "node-sass": "^4.13.1",
+      "rollup-plugin-vue": "^5.1.6",
+      "vue": "^2.6.11",
+      "vue-jest": "^3.0.5",
+      "vue-template-compiler": "^2.6.11"
+    }
   }
 
   return res

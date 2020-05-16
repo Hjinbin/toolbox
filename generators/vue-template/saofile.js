@@ -56,21 +56,21 @@ module.exports = {
         message: 'Whether to generate an example directory',
         default: true
       },
-      // {
-      //   name: 'test',
-      //   type: 'confirm',
-      //   message: 'Whether to initialize the Jest test template',
-      //   default: true
-      // },
-      // {
-      //   name: 'coverage',
-      //   type: 'confirm',
-      //   message: 'Whether to increase test coverage',
-      //   default: true,
-      //   when ({ test }) {
-      //     return test
-      //   }
-      // },
+      {
+        name: 'test',
+        type: 'confirm',
+        message: 'Whether to initialize the Jest test template',
+        default: true
+      },
+      {
+        name: 'coverage',
+        type: 'confirm',
+        message: 'Whether to increase test coverage',
+        default: true,
+        when ({ test }) {
+          return test
+        }
+      },
       // {
       //   name: 'docs',
       //   type: 'confirm',
@@ -97,8 +97,8 @@ module.exports = {
         files: '**',
         filters: {
           'example/**/*': 'example',
-          // 'test/**/*': 'test',
-          // 'jest.config.js': 'test'
+          'test/**/*': 'test',
+          'jest.config.js': 'test'
         }
       },
       {
