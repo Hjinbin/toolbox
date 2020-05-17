@@ -1,0 +1,7 @@
+example
+yarn.lock
+package-lock.json
+node_modules
+api-doc
+coverage
+docs
