@@ -1,5 +1,16 @@
 module.exports = answers => {
-  const { name, version, description, username, email } = answers
+  const { name, version, description, username, email, docs } = answers
+
+  const docsConf = docs
+    ? {
+      vuese: {
+        title: `cai-${name}`,
+        outDir: 'docs',
+        include: ['./src/**/*.vue'],
+        exclude: []
+      }
+    }
+    : {}
 
   return {
     name: `cai-${name}`,
@@ -11,7 +22,8 @@ module.exports = answers => {
     author: `${username} <${email}>`,
     license: 'MIT',
     devDependencies: updateDevDependencies(answers),
-    browserslist: ['defaults', 'ie >= 11, iOS >= 7, Android >= 4']
+    browserslist: ['defaults', 'ie >= 11, iOS >= 7, Android >= 4'],
+    ...docsConf
   }
 }
 
@@ -27,10 +39,9 @@ function updateScripts (answers) {
   }
 
   if (docs) {
-    // windows10 报错找不到 ./src/*.js 对应的文件
-    // res.docs = 'jsdoc -d ./docs --readme ./README.md src'
-    // res['docs:serve'] = 'npm run docs && node ../../scripts/pkgDocsServe.js'
-    // buildScripts.push('npm run docs')
+    res.docs = 'vuese gen'
+    res['docs:serve'] = 'npm run docs && vuese serve --open'
+    buildScripts.push('npm run docs')
   }
 
   if (test) {

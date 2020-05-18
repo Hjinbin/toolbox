@@ -71,12 +71,12 @@ module.exports = {
           return test
         }
       },
-      // {
-      //   name: 'docs',
-      //   type: 'confirm',
-      //   message: 'Whether to use Vuese to generate a document',
-      //   default: true
-      // }
+      {
+        name: 'docs',
+        type: 'confirm',
+        message: 'Whether to use Vuese to generate a document',
+        default: true
+      }
     ]
   },
   actions () {
