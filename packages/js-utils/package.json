@@ -1,6 +1,6 @@
 {
   "name": "cai-js-utils",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "js-utils",
   "main": "dist/index.min.js",
   "module": "dist/index.esm.min.js",
