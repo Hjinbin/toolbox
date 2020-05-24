@@ -1,6 +1,6 @@
 {
   "name": "cai-vtooltip",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "vtooltip",
   "main": "dist/index.min.js",
   "module": "src/index.js",

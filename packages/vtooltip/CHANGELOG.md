@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/Hjinbin/toolbox/compare/cai-vtooltip@0.1.0...cai-vtooltip@0.1.1) (2020-05-24)
+
+
+### Bug Fixes
+
+* **vtooltip:** 修复发布后的包引入失败 ([379d522](https://github.com/Hjinbin/toolbox/commit/379d522444480d65846d932f9c59c3d597a70363))
+
+
+
+
+
 # 0.1.0 (2020-05-24)
 
 
