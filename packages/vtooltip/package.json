@@ -2,8 +2,8 @@
   "name": "cai-vtooltip",
   "version": "0.1.0",
   "description": "vtooltip",
-  "main": "dist/index.js",
-  "module": "src/index.vue",
+  "main": "dist/index.min.js",
+  "module": "src/index.js",
   "scripts": {
     "build:lib": "rm -fr dist && bili",
     "dev": "cd example && npm run dev",
