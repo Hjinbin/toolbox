@@ -1,7 +1,8 @@
 /**
  * https://github.com/freeze-component/vue-popper
  * */
-import Popper from 'popper.js/dist/umd/popper.js'
+const Popper = require('popper.js/dist/umd/popper.js');  // eslint-disable-line
+// import Popper from 'popper.js'
 
 export default {
   props: {
@@ -29,7 +30,7 @@ export default {
         return {
           modifiers: {
             computeStyle: {
-              gpuAcceleration: false,
+              gpuAcceleration: false
             },
             preventOverflow: {
               boundariesElement: 'window'
@@ -38,6 +39,10 @@ export default {
         }
       }
     }
+    // visible: {
+    //     type: Boolean,
+    //     default: false
+    // }
   },
   data () {
     return {
@@ -54,7 +59,7 @@ export default {
     },
     visible (val) {
       if (val) {
-        if (this.handleIndexIncrease) this.handleIndexIncrease()  // just use for Poptip
+        if (this.handleIndexIncrease) this.handleIndexIncrease() // just use for Poptip
         this.updatePopper()
         this.$emit('on-popper-show')
       } else {
@@ -65,7 +70,6 @@ export default {
   },
   methods: {
     createPopper () {
-      if (isServer) return
       if (!/^(top|bottom|left|right)(-start|-end)?$/g.test(this.placement)) {
         return
       }
@@ -76,6 +80,7 @@ export default {
 
       if (!popper || !reference) return
 
+      /* eslint-disable-next-line */
       if (this.popperJS && this.popperJS.hasOwnProperty('destroy')) {
         this.popperJS.destroy()
       }
@@ -92,14 +97,11 @@ export default {
       }
 
       this.popperJS = new Popper(reference, popper, options)
-
     },
     updatePopper () {
-      if (isServer) return
       this.popperJS ? this.popperJS.update() : this.createPopper()
     },
     doDestroy () {
-      if (isServer) return
       if (this.visible) return
       this.popperJS.destroy()
       this.popperJS = null
@@ -107,10 +109,8 @@ export default {
   },
   updated () {
     this.$nextTick(() => this.updatePopper())
-
   },
   beforeDestroy () {
-    if (isServer) return
     if (this.popperJS) {
       this.popperJS.destroy()
     }

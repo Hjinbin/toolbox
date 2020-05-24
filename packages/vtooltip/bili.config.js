@@ -1,5 +1,5 @@
 module.exports = {
-  input: './src/index.vue',
+  input: './src/index.js',
 
   plugins: {
     vue: true
