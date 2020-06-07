@@ -1,6 +1,6 @@
 {
   "name": "error-captured-loader",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "为 await 表达式自动注入异常处理函数，并以 `[err, res]` 的格式返回，适用于 async/await 的同步写法",
   "main": "src/index.js",
   "repository": "https://github.com/Hjinbin/toolbox.git",
