@@ -1,0 +1,8 @@
+{
+  "name": "cai-upload-source-map-plugin",
+  "version": "0.0.0",
+  "description": "打包后自动上传source-map的webpack plugin",
+  "main": "src/index.js",
+  "author": "hjinbin <1057316754@qq.com>",
+  "license": "MIT"
+}
