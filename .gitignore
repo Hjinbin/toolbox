@@ -3,8 +3,10 @@
 node_modules
 
 **/example/dist
+**/example/server/upload
 
 packages/**/docs/**
 packages/**/coverage/**
 
 lerna-debug.log
+
