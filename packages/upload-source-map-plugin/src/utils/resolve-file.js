@@ -19,7 +19,7 @@ module.exports = resolveFile = (outputPath) => {
         read(wholePath)
       }
       if (stat.isFile() && sourceMapExpList.some(e => e.test(dir))) {
-        res.push(wholePath)
+        res.push({ path: wholePath, name: dir })
       }
     })
   }

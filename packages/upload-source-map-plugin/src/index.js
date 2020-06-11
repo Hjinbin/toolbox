@@ -1,4 +1,5 @@
 const resolveFile = require('./utils/resolve-file')
+const uploadFile = require('./utils/upload-file')
 
 /**
  * @class
@@ -20,8 +21,9 @@ class UploadSourceMapPlugin {
 
   doneCallback ({ url, outputPath }) {
     const sourcemapList = resolveFile(outputPath)
-    sourcemapList.forEach(p => {
-      uploadFile({url, outputPath})
+    // TODO: 文件名应该体现出目录结构，如 js/a.js.map，方便后台按目录存储
+    sourcemapList.forEach(({ path: filePath, name: fileName }) => {
+      uploadFile({ url, filePath, fileName })
     })
   }
 }

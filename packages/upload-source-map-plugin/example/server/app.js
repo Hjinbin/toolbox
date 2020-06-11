@@ -1,29 +1,34 @@
 const path = require('path')
+const fs = require('fs')
 const Koa = require('koa')
-const koaBody = require('koa-body')
 const Router = require('koa-router')
 
 const app = new Koa()
 
-app.use(koaBody({
-  multipart: true,
-  formidable: {
-    uploadDir: path.join(__dirname, 'upload'),
-    keepExtensions: true
-  }
-}))
-
 const router = new Router()
 router.post('/upload', async function (ctx) {
-  const file = ctx.request.files.file
-  ctx.body = {
-    code: 0,
-    data: {
-      path: file.path
-    },
-    msg: ''
-  }
+  ctx.req
+    .on('data', data => {
+      const content = data.toString('utf8')
+      const { querystring } = ctx.request
+      const [, fileName] = querystring.split('=')
+      writeFile(fileName, content)
+    })
+    // .on('close', () => { console.log('close') })
+    // .on('error', () => console.log('error'))
+    // .on('end', () => console.log('end'))
 })
 app.use(router.routes())
 
 app.listen(5001, () => console.log('服务已启动：http://localhost:5001'))
+
+function writeFile (fileName, content) {
+  const dirPath = path.join(__dirname, 'upload')
+  const filePath = path.join(__dirname, 'upload', fileName)
+  if(!fs.existsSync(dirPath)) {
+    fs.mkdirSync(dirPath);
+  }
+  fs.writeFile(filePath, content, (err) => {
+    if (err) console.log('write fail', err)
+  })
+}
