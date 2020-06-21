@@ -11,3 +11,7 @@
 ## webpack loader
 
 [error-captured-loader](/packages/error-captured-loader/README.md) &nbsp; 为 await 表达式自动注入异常处理函数，并以 `[err, res]` 的格式返回
+
+## webpack plugin
+
+[upload-source-map-plugin](/packages/upload-source-map-plugin/README.md) &nbsp; webpack打包完成后自动上传 `source-map` 文件
